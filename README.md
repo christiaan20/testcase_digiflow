@@ -6,7 +6,9 @@ A minimal FastAPI boilerplate that loads a local `.pdf` file from the repository
 
 - `app/main.py` - FastAPI entrypoint
 - `app/services/file_loader.py` - file loading helper
-- `data/sample.pdf` - local pdf file read by the API
+- `app/services/comment_operations.py` - comment operations with pikepdf
+- `app/services/analyse_pdf.py` - prints the properties of comments in a pdf
+- `data/*` - local pdf files read by the API
 - `tests/test_main.py` - basic API tests
 
 ## Install
@@ -34,15 +36,15 @@ uvicorn app.main:app --reload
 Then open:
 
 - `http://127.0.0.1:8000/`
-- `http://127.0.0.1:8000/file`
-
+- `http://127.0.0.1:8000/analyze_pdf_comments`
+- `http://127.0.0.1:8000/fixComments`
 ## Example request
-
-Send a `POST` request to `/file` with a repository-relative `.pdf` path in JSON:
+### analyze_pdf_comments
+Send a `POST` request to `/analyze_pdf_comments` with a repository-relative `.pdf` path in JSON:
 
 ```json
 {
-  "path": "data/sample.pdf"
+  "path": "data/sample1.pdf"
 }
 ```
 
@@ -50,12 +52,31 @@ Example response:
 
 ```json
 {
-  "path": "data/sample.pdf",
-  "content": "Hello from the repository pdf file!\nThis content is loaded by FastAPI.\n"
+  "path": "data/example1.pdf"
 }
 ```
 
-The `/file` endpoint reads the requested local `.pdf` file, prints the pdf content to the server console, and returns it as JSON.
+The `/analyze_pdf_comments` endpoint reads the requested local `.pdf` file, prints the pdf annotation information to the server console.
+
+### fixComments
+Send a `POST` request to `/fixComments` with a repository-relative `.pdf` path in JSON:
+
+```json
+{
+  "path": "data/sample1.pdf"
+}
+```
+
+Example response:
+
+```json
+{
+  "path": "data/example1.pdf"
+}
+```
+
+The `/fixComments` endpoint reads the requested local `.pdf` file and writes a copy of it to the output directory.  
+This API needs to be completed to detect invisible comments and fix them.
 
 Accepted paths must:
 
