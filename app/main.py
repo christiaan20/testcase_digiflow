@@ -18,7 +18,7 @@ class FileRequest(BaseModel):
     path: str = Field(
         ...,
         description="Repository-relative path to a local .pdf file.",
-        examples=["data/out_Naam_filled_2.pdf"],
+        examples=["data/example_1.pdf"],
     )
 
 app = FastAPI(

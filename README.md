@@ -52,7 +52,7 @@ Example response:
 
 ```json
 {
-  "path": "data/example1.pdf"
+  "path": "data/example_1.pdf"
 }
 ```
 
@@ -71,7 +71,7 @@ Example response:
 
 ```json
 {
-  "path": "data/example1.pdf"
+  "path": "data/example_1.pdf"
 }
 ```
 
