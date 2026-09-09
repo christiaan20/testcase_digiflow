@@ -35,9 +35,8 @@ uvicorn app.main:app --reload
 
 Then open:
 
-- `http://127.0.0.1:8000/`
-- `http://127.0.0.1:8000/analyze_pdf_comments`
-- `http://127.0.0.1:8000/fixComments`
+- `http://127.0.0.1:8000/docs`  
+There you will find a documentation page where you can test the API's as shown below
 ## Example request
 ### analyze_pdf_comments
 Send a `POST` request to `/analyze_pdf_comments` with a repository-relative `.pdf` path in JSON:
